@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {%for message in messages%}
+    <ul>
+        <li>{{message}}</li>
+    </ul>
+    {% endfor %}
+    <h1>Registration</h1>
+    <form action="/create" method="post">
+        {% csrf_token %}
+        <p>First name: <input type="text" name="form_fname"></p>
+        <p>Last name: <input type="text" name="form_lname"></p>
+        <p>Email : <input type="text" name="form_email" id=""></p>
+        <p>Password : <input type="text" name="form_pw" id=""></p>
+        <p><input type="submit" value="Register"></p>
+    </form>
+ 
+    <h1>Login</h1>
+    <form action="/login" method="post">
+        {% csrf_token %}
+        <p>Email: <input type="email" name="form_email" id=""></p>
+        <p>Password: <input type="password" name="form_pw" id=""></p>
+        <p><input type="submit" value="Login"></p>
+
+    </form>
+</body>
+</html>

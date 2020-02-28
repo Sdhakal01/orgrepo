@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/dashboard">Dashboard</a> |  <a href="/logout">Logout</a>
+    <br>
+    <br>
+    {% if loggedinuser == grouptoshow.creator %}
+    <a href="/delete/{{grouptoshow.id}}">Delete</a>
+    {% endif %}
+    {%if loggedinuser in grouptoshow.member.all%}
+    <a href="/leave/{{grouptoshow.id}}">Leave org</a>
+    {% else %}
+    <a href="/add/{{grouptoshow.id}}"> Add org</a>
+    {% endif %}
+    <h4>{{grouptoshow.orgname}}</h4>
+    <p>{{grouptoshow.description}}</p>
+    <h4>created by: {{grouptoshow.creator.firstname}} {{grouptoshow.creator.lastname}}</h4>
+    <h4>Members:</h4>
+    {% for user in grouptoshow.member.all%}
+    <ul>
+        <li>{{user.firstname}} {{user.lastname}}  </li>
+    </ul>
+    {% endfor %}
+ 
+</body>
+</html>
